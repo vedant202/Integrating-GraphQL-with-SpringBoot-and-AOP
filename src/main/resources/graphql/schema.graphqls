@@ -1,0 +1,57 @@
+type Student{
+	id: Int!
+	name: String!
+	address: [Address]
+	phone: String
+	languages: String
+}
+
+type Address{
+	type : AddressType!
+	street: String
+}
+
+type Book{
+    id: String!
+    name: String!
+}
+
+enum AddressType{
+	 PRIMARY
+    SECONDARY
+}
+
+type Query{
+	student(id:Int!) :Student
+	getBook(id:String!):Book
+	bookTitle(id:String!):String
+	getAllBooks:[Book]
+}
+
+input AddressInput{
+	id: Int!
+	studentId: Int!
+	type: AddressType!
+	street: String!
+}
+
+input StudentInput{
+	id: Int!
+	name: String!
+	languages: String!
+	
+}
+
+input BookInput{
+	id: Int!
+	name: String!
+	
+	
+}
+
+type Mutation{
+	createStudent(student: StudentInput):Student
+	createAddress(address: AddressInput): Address
+	createBook(book: BookInput): Book
+}
+
